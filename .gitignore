@@ -1,14 +1,15 @@
 # ignore the user configuration file
 conf.yaml
 
+# ignore uv lock file
+uv.lock
+
 # ignore non-default background images
 /backgrounds/*
 !/backgrounds/README.md
 
 # ignore non-default live2d models
 /live2d-models/*
-!/live2d-models/mao_pro
-!/live2d-models/shizuku
 
 # ignore non-default character configs
 /characters/*
