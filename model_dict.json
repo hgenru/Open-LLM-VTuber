@@ -1,30 +1,158 @@
 [
     {
         "name": "mao_pro",
-        "description": "",
+        "description": "[neutral] [anger] [disgust] [fear] [joy] [smirk] [sadness] [surprise]",
         "url": "/live2d-models/mao_pro/runtime/mao_pro.model3.json",
         "kScale": 0.5,
         "initialXshift": 0,
         "initialYshift": 0,
         "kXOffset": 1150,
         "idleMotionGroupName": "Idle",
+        "defaultEmotion": "exp_01",
         "emotionMap": {
-            "neutral": 0,
-            "anger": 2,
-            "disgust": 2,
-            "fear": 1,
-            "joy": 3,
-            "smirk": 3,
-            "sadness": 1,
-            "surprise": 3
+            "neutral": "exp_01",
+            "anger": "exp_03",
+            "disgust": "exp_03",
+            "fear": "exp_02",
+            "joy": "exp_04",
+            "smirk": "exp_04",
+            "sadness": "exp_02",
+            "surprise": "exp_04"
+        }
+    },
+    {
+        "name": "lm03p",
+        "description": "LM03P Live2D model with working head/body tap reactions",
+        "url": "/live2d-models/LM03P/LM03P.model3.json",
+        "kScale": 0.7,
+        "initialXshift": 0,
+        "initialYshift": 0,
+        "idleMotionGroupName": "",
+        "tapMotions": {
+            "HitAreaHead": { "TapHead": 100 },
+            "HitAreaBody": { "TapBody": 100 },
+            "HitAreaFace": { "TapBody": 70, "Special": 30 },
+            "HitAreaHair": { "Shake": 100 }
+        },
+        "emotionMap": {}
+    },
+    {
+        "name": "shizuku",
+        "description": "",
+        "url": "/live2d-models/shizuku/runtime/shizuku.model3.json",
+        "kScale": 0.5,
+        "initialXshift": 0,
+        "initialYshift": 0,
+        "kXOffset": 0,
+        "idleMotionGroupName": "Idle",
+        "emotionMap": {},
+        "tapMotions": {
+            "HitAreaHead": { "Tap": 100 },
+            "HitAreaBody": { "Tap": 100 }
+        }
+    },
+    {
+        "name": "hs_girl_black",
+        "description": "",
+        "url": "/live2d-models/hs_girl_black/High school girl YiZhi -.model3.json",
+        "kScale": 0.5,
+        "initialXshift": 0,
+        "initialYshift": 0,
+        "kXOffset": 0,
+        "idleMotionGroupName": "Idle",
+        "emotionMap": {}
+    },
+    {
+        "name": "hs_girl_white",
+        "description": "",
+        "url": "/live2d-models/hs_girl_white/High school girl Kui.model3.json",
+        "kScale": 0.5,
+        "initialXshift": 0,
+        "initialYshift": 0,
+        "kXOffset": 0,
+        "idleMotionGroupName": "Idle",
+        "emotionMap": {}
+    },
+    {
+        "name": "cute_android",
+        "description": "[expression1] [expression2] [expression3] [expression4] [expression5] [expression6] [expression7] [expression8] [expression9] [expression10] [expression11] [expression12] [expression13] [expression14] [expression15] [expression16]",
+        "url": "/live2d-models/cute_android/cute_android2.model3.json",
+        "kScale": 0.5,
+        "initialXshift": 0,
+        "initialYshift": 0,
+        "kXOffset": 0,
+        "idleMotionGroupName": "Idle",
+        "emotionMap": {
+            "expression1": "expression1",
+            "expression2": "expression2",
+            "expression3": "expression3",
+            "expression4": "expression4",
+            "expression5": "expression5",
+            "expression6": "expression6",
+            "expression7": "expression7",
+            "expression8": "expression8",
+            "expression9": "expression9",
+            "expression10": "expression10",
+            "expression11": "expression11",
+            "expression12": "expression12",
+            "expression13": "expression13",
+            "expression14": "expression14",
+            "expression15": "expression15",
+            "expression16": "expression16"
         },
         "tapMotions": {
-            "HitAreaHead": {
-                "": 1
-            },
-            "HitAreaBody": {
-                "": 1
-            }
+            "HitAreaHead": { "scene1": 100 },
+            "HitAreaBody": { "scene1": 100 }
+        }
+    },
+    {
+        "name": "half_demon_elf",
+        "description": "[love] [excited] [sad] [pout] [angry] [shocked] [confused] [scared] [blush] [yandere] [wavy mouth] [brb] [chibi] [dance_face] [jump_face] [normal_jump_face] [walk_face]",
+        "url": "/live2d-models/half_demon_elf/165 221.model3.json",
+        "kScale": 0.5,
+        "initialXshift": 0,
+        "initialYshift": 0,
+        "kXOffset": 0,
+        "idleMotionGroupName": "Idle",
+        "defaultEmotion": "idle",
+        "emotionMap": {
+            "neutral": "idle",
+            "joy": "EXP 2 [EXCITED]",
+            "love": "EXP 1 [LOVE]",
+            "anger": "EXP 5 [ANGRY]",
+            "sadness": "EXP 3 [SAD]",
+            "surprise": "EXP 6 [SHOCKED]",
+            "fear": "EXP 8 [SCARED]",
+            "confusion": "EXP 7 [CONFUSED]",
+            "blush": "EXP 9 [BLUSH]",
+            "pout": "EXP 4 [POUT]",
+            "yandere": "EXP 10 [YANDERE]",
+            "wavy_mouth": "ACC 1 [WAVY MOUTH]",
+            "brb": "ACC 2 [BRB]",
+            "chibi": "chibi",
+            "dance_face": "02 dance 2b",
+            "jump_face": "jump 2b",
+            "normal_jump_face": "normal jump",
+            "walk_face": "walk 2b"
+        },
+        "tapMotions": {
+            "HitAreaHead": { "Jump": 60, "Dance": 40 },
+            "HitAreaBody": { "Walk": 100 }
+        }
+    },
+    {
+        "name": "yuri_0013",
+        "description": "[face_red] [face_blue]",
+        "url": "/live2d-models/yuri_0013/yuri_0013.model3.json",
+        "kScale": 0.5,
+        "initialXshift": 0,
+        "initialYshift": 0,
+        "kXOffset": 0,
+        "idleMotionGroupName": "",
+        "defaultEmotion": "FaceRed",
+        "emotionMap": {
+            "face_red": "FaceRed",
+            "face_blue": "FaceBlue"
         }
     }
 ]
