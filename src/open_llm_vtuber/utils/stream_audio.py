@@ -1,4 +1,5 @@
 import base64
+import random
 from pydub import AudioSegment
 from pydub.utils import make_chunks
 from ..agent.output_types import Actions
@@ -22,6 +23,41 @@ def _get_volume_by_chunks(audio: AudioSegment, chunk_length_ms: int) -> list:
     if max_volume == 0:
         raise ValueError("Audio is empty or all zero.")
     return [volume / max_volume for volume in volumes]
+
+
+def _apply_dynamic_pitch(audio: AudioSegment, chunk_length_ms: int, base_pitch: float = 1.0, variation: float = 0.1) -> AudioSegment:
+    """
+    Apply dynamic pitch shift to audio chunks (GLaDOS-style).
+
+    Parameters:
+        audio (AudioSegment): The audio to process
+        chunk_length_ms (int): Length of each chunk in ms
+        base_pitch (float): Base pitch multiplier (default 1.0)
+        variation (float): Random variation range (default 0.1 = ±10%)
+
+    Returns:
+        AudioSegment: Audio with dynamic pitch applied
+    """
+    chunks = make_chunks(audio, chunk_length_ms)
+    processed_chunks = []
+
+    for chunk in chunks:
+        # Random pitch shift for this chunk
+        pitch_shift = base_pitch + random.uniform(-variation, variation)
+
+        # Apply pitch shift
+        new_sample_rate = int(chunk.frame_rate * pitch_shift)
+        shifted = chunk._spawn(chunk.raw_data, overrides={'frame_rate': new_sample_rate})
+        shifted = shifted.set_frame_rate(chunk.frame_rate)
+
+        processed_chunks.append(shifted)
+
+    # Combine all chunks
+    result = processed_chunks[0]
+    for chunk in processed_chunks[1:]:
+        result += chunk
+
+    return result
 
 
 def prepare_audio_payload(
@@ -61,6 +97,8 @@ def prepare_audio_payload(
 
     try:
         audio = AudioSegment.from_file(audio_path)
+        audio = _apply_dynamic_pitch(audio, chunk_length_ms=5, base_pitch=1.0, variation=0.05)
+        audio = _apply_dynamic_pitch(audio, chunk_length_ms=100, base_pitch=1.0, variation=0.07)
         audio_bytes = audio.export(format="wav").read()
     except Exception as e:
         raise ValueError(
